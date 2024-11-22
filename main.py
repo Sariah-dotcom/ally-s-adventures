@@ -24,7 +24,6 @@ pygame.mixer.music.load('music/arcade.mp3')
 pygame.mixer.music.set_volume(0.3)
 pygame.mixer.music.play(-1)
 
-
 # Load alien player image and positions
 alienImg = pygame.image.load('images/alien.png')
 playerX = 150
@@ -89,6 +88,7 @@ def splash_screen():
 
         pygame.display.update()
 
+        #Wait for key press
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -253,10 +253,9 @@ def main_game():
             game_over()
             return 
         
+        # Update and display the score
         score += 1
-
-        # Display the score
-        font = pygame.font.Font(font_path, 40)  # Default font, size 36
+        font = pygame.font.Font(font_path, 40)
         score_text = font.render(f"Score: {score}", True, black)
         screen.blit(score_text, (10, 10))
 
