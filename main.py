@@ -145,9 +145,37 @@ def story():
             if event.type == pygame.KEYDOWN:
                 return  # Exit the story screen
 
+# Gameplay instructions
+def instructions():
+    """Display the instructions screen until the user presses a key."""
+    while True:
+        screen.fill(coral)
+        
+        title = pygame.image.load('images/instructions-title.png')
+        screen.blit(title, (screen_width // 2 - title.get_width() // 2, 20))
+
+        alienDemo = pygame.transform.scale(pygame.image.load('images/alien.png'), (150, 160))
+        screen.blit(alienDemo, (screen_width // 2 - alienDemo.get_width() // 2, 200))
+
+        arrows = pygame.transform.scale(pygame.image.load('images/arrows.png'), (200, 80))
+        screen.blit(arrows, (screen_width // 2 - arrows.get_width() // 2, 390))
+
+        instructions = pygame.image.load('images/instructions.png')
+        screen.blit(instructions, (screen_width // 2 - instructions.get_width() // 2, 520))
+
+        pygame.display.update()
+
+        # Wait for key press
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            if event.type == pygame.KEYDOWN:
+                return  # Exit the instructions screen
+
+
 # Game over screen
 def game_over():
-
     """Display the game over screen and wait for the user to press any key to replay."""
     screen.fill(coral)
     font_path = 'DarkerGrotesque-VariableFont_wght.ttf'
@@ -271,6 +299,7 @@ while True:
     if game_play == 0:
         splash_screen()
         story()
+        instructions()
         game_play +=1
     else:   
         main_game()    
