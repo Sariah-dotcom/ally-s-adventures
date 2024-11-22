@@ -7,7 +7,7 @@
    ```
 2. Install python and pygame
    ```
-   git clone https://github.com/your-username/allys-adventures.git
+   pip install pygame
    ```
 3. Run the game
    ```
