@@ -25,9 +25,9 @@ pygame.mixer.music.set_volume(0.3)
 pygame.mixer.music.play(-1)
 
 # Load alien player image and positions
-alienImg = pygame.image.load('images/alien.png')
+alienImg = pygame.transform.scale(pygame.image.load('images/alien.png'), (150, 160))
 playerX = 150
-playerY = 430
+playerY = 510
 playerX_change = 0
 
 def alien(playerX, playerY):
@@ -64,7 +64,7 @@ def reset_obstacle():
 
     x = random.randint(3, 460)  # Random x position across the screen width
     y = random.randint(-200, -50)  # Start above the screen
-    speed = random.uniform(5, 10)  # Random speed
+    speed = random.uniform(6, 15)  # Random speed
 
     return {"img": img, "x": x, "y": y, "speed": speed}
 
@@ -150,7 +150,7 @@ def instructions():
     """Display the instructions screen until the user presses a key."""
     while True:
         screen.fill(coral)
-        
+
         title = pygame.image.load('images/instructions-title.png')
         screen.blit(title, (screen_width // 2 - title.get_width() // 2, 20))
 
